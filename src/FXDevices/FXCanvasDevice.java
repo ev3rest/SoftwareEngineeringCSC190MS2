@@ -42,47 +42,50 @@ public class FXCanvasDevice implements ICanvasDevice {
     //--------------------------------------
     //data members
     //--------------------------------------
+    Canvas rand;
     
-
     //--------------------------------------
     //methods
     //--------------------------------------
    
     public FXCanvasDevice(Canvas canvas) {
-        throw new UnsupportedOperationException("Not implemented yet!");
+        rand = canvas;
     }
 
    
     @Override
     public void drawImg(String imgPath, int x, int y, int width, int height, int degree) {
-         throw new UnsupportedOperationException("Not implemented yet!");
+         System.out.print("Not implemented yet!");
     }
 
     @Override
     public int getWidth() {
-         throw new UnsupportedOperationException("Not implemented yet!");
+         System.out.print("Not implemented yet!");
+         return 0;
     }
 
     @Override
     public int getHeight() {
-         throw new UnsupportedOperationException("Not implemented yet!");
+         System.out.print("Not implemented yet!");
+         return 0;
     }
 
     @Override
     public IStopWatch createStopWatch(String name) {
-         throw new UnsupportedOperationException("Not implemented yet!");
+         System.out.print("Not implemented yet!");
+        return null;
     }
 
    
 
     @Override
     public void setupEventHandler(IGameEngine gameEngine) {
-         throw new UnsupportedOperationException("Not implemented yet!");
+         System.out.print("Not implemented yet!");
     }
 
     @Override
     public void clear() {
-         throw new UnsupportedOperationException("Not implemented yet!");
+         System.out.print("Not implemented yet!");
     }
 
 }
