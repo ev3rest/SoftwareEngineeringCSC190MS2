@@ -43,7 +43,7 @@ public class GameTestSound implements IGameEngine{
     @Override
     public void onTick() {
         tick++;
-        if(tick%30==0){//play it every 30 ticks
+        if(tick%60==0){//play it every 30 ticks
             this.soundDevice.playOnce("resources/sound/ok.wav");
         }
     }
