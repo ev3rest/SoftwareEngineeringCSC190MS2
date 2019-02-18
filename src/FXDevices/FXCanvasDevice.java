@@ -29,6 +29,7 @@ import javafx.scene.CacheHint;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.transform.Rotate;
 
@@ -43,6 +44,9 @@ public class FXCanvasDevice implements ICanvasDevice {
     //data members
     //--------------------------------------
     Canvas rand;
+    GraphicsContext gc;
+    Image bloc;
+    ImageView iv1;
     
     //--------------------------------------
     //methods
@@ -50,42 +54,50 @@ public class FXCanvasDevice implements ICanvasDevice {
    
     public FXCanvasDevice(Canvas canvas) {
         rand = canvas;
+        gc = rand.getGraphicsContext2D();
     }
 
    
     @Override
     public void drawImg(String imgPath, int x, int y, int width, int height, int degree) {
-         System.out.print("Not implemented yet!");
+       String iPath = "file:" + imgPath;
+       bloc = new Image(iPath);
+       iv1= new ImageView(bloc);
+       iv1.setRotate(degree);
+       //Rotate rot = new Rotate(degree);
+       //iv1.getTransforms().addAll(rot);
+       gc = rand.getGraphicsContext2D();
+       gc.drawImage(iv1.getImage(), x, y, width, height);
     }
 
     @Override
     public int getWidth() {
-         System.out.print("Not implemented yet!");
-         return 0;
+        // System.out.print("Not implemented yet!");
+         return (int) rand.getWidth();
     }
 
     @Override
     public int getHeight() {
-         System.out.print("Not implemented yet!");
-         return 0;
+         //System.out.print("Not implemented yet!");
+         return (int) rand.getHeight();
     }
 
     @Override
     public IStopWatch createStopWatch(String name) {
-         System.out.print("Not implemented yet!");
-        return null;
+        
+        return new FXStockWatch(name);
     }
 
    
 
     @Override
     public void setupEventHandler(IGameEngine gameEngine) {
-         System.out.print("Not implemented yet!");
+         System.out.println("Event Handler not used");
     }
 
     @Override
     public void clear() {
-         System.out.print("Not implemented yet!");
+        gc.clearRect(0, 0, getHeight(), getWidth());
     }
 
 }
