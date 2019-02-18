@@ -29,6 +29,7 @@ import javafx.scene.CacheHint;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.transform.Rotate;
 
@@ -79,7 +80,17 @@ public class FXCanvasDevice implements ICanvasDevice {
 
     @Override
     public void setupEventHandler(IGameEngine gameEngine) {
-        
+        rand.setOnMousePressed((MouseEvent event) -> {
+            double x = event.getSceneX();
+            double y = event.getSceneY();
+            if (event.getButton() == MouseButton.PRIMARY){
+                gameEngine.onRightClick(this, (int) x, (int) y);
+            }
+            else{
+                gameEngine.onLeftClick(this, (int) x, (int) y);
+            }
+                    
+        });
     }
 
     @Override

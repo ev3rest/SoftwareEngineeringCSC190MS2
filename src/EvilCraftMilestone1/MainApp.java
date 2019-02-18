@@ -132,18 +132,6 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         
-        //4 Mouse clicks handler
-        canvas.setOnMousePressed((MouseEvent event) -> {
-            double x = event.getSceneX();
-            double y = event.getSceneY();
-            if (event.getButton() == MouseButton.PRIMARY){
-                gMouseEvents.onRightClick(fxCanvas, (int) x, (int) y);
-            }
-            else{
-                gMouseEvents.onLeftClick(fxCanvas, (int) x, (int) y);
-            }
-                    
-        });
     }
 
     /**

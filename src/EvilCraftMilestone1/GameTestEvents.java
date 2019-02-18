@@ -31,6 +31,7 @@ public class GameTestEvents implements IGameEngine{
     public GameTestEvents(ICanvasDevice canvas){
         this.canvasDevice = canvas;
         this.canvasDevice.setupEventHandler(this);
+        
     }
 
     @Override
