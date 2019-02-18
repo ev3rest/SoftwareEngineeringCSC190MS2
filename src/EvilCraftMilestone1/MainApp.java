@@ -122,8 +122,6 @@ public class MainApp extends Application {
         createButton("Test FPS 2000 Pics Sparse", gFPS2000Sparse, vbox);
         createButton("Test BigPic Equiv 2000", gLargePic, vbox);
         
-        fxCanvas.setupEventHandler(gMouseEvents);
-        
         //3. First layer HBox (horitontal box) of Canvas and VBox
         HBox hbox = new HBox();
         hbox.getChildren().add(canvas);
@@ -134,7 +132,7 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         
-        //3 Mouse clicks handler
+        //4 Mouse clicks handler
         canvas.setOnMousePressed((MouseEvent event) -> {
             double x = event.getSceneX();
             double y = event.getSceneY();
