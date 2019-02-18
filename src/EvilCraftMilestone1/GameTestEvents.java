@@ -35,12 +35,12 @@ public class GameTestEvents implements IGameEngine{
 
     @Override
     public void init() {
-        //do nothing
+        System.out.print("123 init\n");
+        this.onLeftClick(canvasDevice, 12, 323);
     }
 
     @Override
     public void onTick() {
-        //do nothing
     }
 
     @Override

@@ -55,37 +55,36 @@ public class FXCanvasDevice implements ICanvasDevice {
    
     @Override
     public void drawImg(String imgPath, int x, int y, int width, int height, int degree) {
-         System.out.print("Not implemented yet!");
+         System.out.print("Not implemented yet!\n");
     }
 
     @Override
     public int getWidth() {
-         System.out.print("Not implemented yet!");
+         System.out.print("Not implemented yet!\n");
          return 0;
     }
 
     @Override
     public int getHeight() {
-         System.out.print("Not implemented yet!");
+         System.out.print("Not implemented yet!\n");
          return 0;
     }
 
     @Override
     public IStopWatch createStopWatch(String name) {
-         System.out.print("Not implemented yet!");
+         System.out.print("Not implemented yet!\n");
         return null;
     }
 
-   
 
     @Override
     public void setupEventHandler(IGameEngine gameEngine) {
-         System.out.print("Not implemented yet!");
+        
     }
 
     @Override
     public void clear() {
-         System.out.print("Not implemented yet!");
+         System.out.print("Not implemented yet!\n");
     }
 
 }
