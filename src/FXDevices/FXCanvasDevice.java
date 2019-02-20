@@ -29,8 +29,11 @@ import javafx.scene.CacheHint;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.transform.Rotate;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.paint.Color;
 
 /**
  * FXVersion Implementation of ICanvasDevice
@@ -43,49 +46,59 @@ public class FXCanvasDevice implements ICanvasDevice {
     //data members
     //--------------------------------------
     Canvas rand;
-    
+    GraphicsContext gc;
+    Image bloc;
+    ImageView iv1;
     //--------------------------------------
     //methods
     //--------------------------------------
    
     public FXCanvasDevice(Canvas canvas) {
         rand = canvas;
+        gc = rand.getGraphicsContext2D();
+    }
+    
+    private void rotate(GraphicsContext gc, int width, int height, double degree){
+        Rotate r = new Rotate(degree, width, height);
+        gc.setTransform(r.getMxx(), r.getMyx(),r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
     }
 
    
     @Override
     public void drawImg(String imgPath, int x, int y, int width, int height, int degree) {
-         System.out.print("Not implemented yet!");
+       String iPath = "file:" + imgPath;
+       bloc = new Image(iPath);
+       gc.save();
+       rotate(gc, x+((int)bloc.getWidth()/2), y+((int)bloc.getHeight()/2), degree);
+       gc.drawImage(bloc, x, y);
+       gc.restore();
     }
 
     @Override
     public int getWidth() {
-         System.out.print("Not implemented yet!");
-         return 0;
+         return (int) rand.getWidth();
     }
 
     @Override
     public int getHeight() {
-         System.out.print("Not implemented yet!");
-         return 0;
+         return (int) rand.getHeight();
     }
 
     @Override
     public IStopWatch createStopWatch(String name) {
-         System.out.print("Not implemented yet!");
-        return null;
+        return new FXStockWatch(name);
     }
 
    
 
     @Override
     public void setupEventHandler(IGameEngine gameEngine) {
-         System.out.print("Not implemented yet!");
+         System.out.println("Event Handler not used");
     }
 
     @Override
     public void clear() {
-         System.out.print("Not implemented yet!");
+        gc.clearRect(0, 0, getHeight(), getWidth());
     }
 
 }

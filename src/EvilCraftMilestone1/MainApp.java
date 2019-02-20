@@ -94,6 +94,7 @@ public class MainApp extends Application {
         VBox vbox = new VBox();
         vbox.setPrefSize(200, 1000);
         FXCanvasDevice fxCanvas = new FXCanvasDevice(canvas);
+        //fxCanvas.drawImg("resources/images/pic1.png", 1, 50, 10, 10, 10);
         FXSoundDevice fxSound = new FXSoundDevice();
         GameTestRotate gRotate = new GameTestRotate(fxCanvas);
         GameFPS gFPS1 = new GameFPS("resources/images/pic1.png", 1, 50, 1000, 1000, fxCanvas);

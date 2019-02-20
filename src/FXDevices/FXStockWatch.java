@@ -25,43 +25,67 @@ import BridgePattern.IStopWatch;
  */
 public class FXStockWatch implements IStopWatch{
     //--- DATA MEMBERS -------------
-    
+    boolean started;
+    String name;
+    long startTime;
+    long endTime;
+    long elapsedTime;
+    long totalTime;
     
     // ----------------- METHODS ----------------------------
     
     //--- OPERATOINS----------------
     public FXStockWatch(String name){
-         throw new UnsupportedOperationException("Not implemented yet!");
+         this.name = name;
+         started = false;
+         startTime=0;
+         endTime=0;
+         elapsedTime=0;
+         totalTime=0;
     }
 
     @Override
     public void start() {
-         throw new UnsupportedOperationException("Not implemented yet!");
+         if(started){
+             System.out.println("You have to stop first");
+             return;
+         }
+         started = true;
+         startTime = System.nanoTime();
+        
     }
 
     @Override
     public void stop() {
-         throw new UnsupportedOperationException("Not implemented yet!");
+         if(!started){
+             System.out.println("You have to start first");
+             return;
+         }
+         started =false;
+         endTime = System.nanoTime();
+         elapsedTime = (endTime - startTime)/1000000;
+         totalTime+=elapsedTime;
+         
     }
 
     @Override
     public long getElapsed() {
-         throw new UnsupportedOperationException("Not implemented yet!");
+        return elapsedTime;
     }
 
     @Override
     public long getTotalElapsed() {
-         throw new UnsupportedOperationException("Not implemented yet!");
+         return totalTime;
     }
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not implemented yet!");
+         totalTime=0;
     }
 
     @Override
     public String getName() {
-        throw new UnsupportedOperationException("Not implemented yet!");
+        return name;
     }
     
 }
