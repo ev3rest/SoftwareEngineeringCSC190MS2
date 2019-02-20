@@ -85,19 +85,16 @@ public class FXCanvasDevice implements ICanvasDevice {
 
     @Override
     public int getWidth() {
-        // System.out.print("Not implemented yet!");
          return (int) rand.getWidth();
     }
 
     @Override
     public int getHeight() {
-         //System.out.print("Not implemented yet!");
          return (int) rand.getHeight();
     }
 
     @Override
     public IStopWatch createStopWatch(String name) {
-        
         return new FXStockWatch(name);
     }
 
