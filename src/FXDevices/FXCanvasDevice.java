@@ -34,6 +34,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.transform.Rotate;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.paint.Color;
+import java.util.*;
 
 /**
  * FXVersion Implementation of ICanvasDevice
@@ -49,6 +50,7 @@ public class FXCanvasDevice implements ICanvasDevice {
     GraphicsContext gc;
     Image bloc;
     ImageView iv1;
+    Map<String,Image> imgLoad;
     //--------------------------------------
     //methods
     //--------------------------------------
@@ -56,6 +58,7 @@ public class FXCanvasDevice implements ICanvasDevice {
     public FXCanvasDevice(Canvas canvas) {
         rand = canvas;
         gc = rand.getGraphicsContext2D();
+        imgLoad = new HashMap<String,Image>();
     }
     
     private void rotate(GraphicsContext gc, int width, int height, double degree){
@@ -67,10 +70,14 @@ public class FXCanvasDevice implements ICanvasDevice {
     @Override
     public void drawImg(String imgPath, int x, int y, int width, int height, int degree) {
        String iPath = "file:" + imgPath;
-       bloc = new Image(iPath);
+       if(imgLoad.isEmpty()){
+            bloc = new Image(iPath);
+            imgLoad.put(iPath,bloc);
+       }
+       Image Hbloc = imgLoad.get(iPath);
        gc.save();
-       rotate(gc, x+((int)bloc.getWidth()/2), y+((int)bloc.getHeight()/2), degree);
-       gc.drawImage(bloc, x, y);
+       rotate(gc, x+((int)Hbloc.getWidth()/2), y+((int)Hbloc.getHeight()/2), degree);
+       gc.drawImage(Hbloc, x, y);
        gc.restore();
        
     }
