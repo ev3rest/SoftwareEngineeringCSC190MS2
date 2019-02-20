@@ -70,9 +70,10 @@ public class FXCanvasDevice implements ICanvasDevice {
     @Override
     public void drawImg(String imgPath, int x, int y, int width, int height, int degree) {
        String iPath = "file:" + imgPath;
-       if(imgLoad.isEmpty()){
+       if(!imgLoad.containsKey(iPath)){
             bloc = new Image(iPath);
             imgLoad.put(iPath,bloc);
+            System.out.println("Image Queued");
        }
        Image Hbloc = imgLoad.get(iPath);
        gc.save();
