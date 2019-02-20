@@ -30,6 +30,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.transform.Rotate;
 import javafx.scene.SnapshotParameters;
@@ -97,11 +98,20 @@ public class FXCanvasDevice implements ICanvasDevice {
         return new FXStockWatch(name);
     }
 
-   
 
     @Override
     public void setupEventHandler(IGameEngine gameEngine) {
-         System.out.println("Event Handler not used");
+        rand.setOnMousePressed((MouseEvent event) -> {
+            double x = event.getSceneX();
+            double y = event.getSceneY();
+            if (event.getButton() == MouseButton.PRIMARY){
+                gameEngine.onRightClick(this, (int) x, (int) y);
+            }
+            else{
+                gameEngine.onLeftClick(this, (int) x, (int) y);
+            }
+                    
+        });
     }
 
     @Override

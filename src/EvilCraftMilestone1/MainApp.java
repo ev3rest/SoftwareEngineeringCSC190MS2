@@ -15,6 +15,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -80,6 +82,10 @@ public class MainApp extends Application {
        });
     }
     
+    protected void MouseHandlers(){
+    
+    }
+    
     /**
      * Set up the UI layout: a main canvas of 1000x1000 and a button deck of 200x1000
      * @param primaryStage 
@@ -88,7 +94,6 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         //1. Create the Canvas 1000x1000
         Canvas canvas = new Canvas(1000, 1000);
-                   
         
         //2. Create the VBox (right banner) 200x100 and Add Buttons
         VBox vbox = new VBox();
@@ -116,8 +121,7 @@ public class MainApp extends Application {
         createButton("Test FPS 1000 Pics", gFPS1000, vbox);
         createButton("Test FPS 2000 Pics", gFPS2000, vbox);
         createButton("Test FPS 2000 Pics Sparse", gFPS2000Sparse, vbox);
-         createButton("Test BigPic Equiv 2000", gLargePic, vbox);
-        
+        createButton("Test BigPic Equiv 2000", gLargePic, vbox);
         
         //3. First layer HBox (horitontal box) of Canvas and VBox
         HBox hbox = new HBox();
@@ -128,6 +132,7 @@ public class MainApp extends Application {
         primaryStage.setTitle("EvilCraft Milestone 1");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
     }
 
     /**

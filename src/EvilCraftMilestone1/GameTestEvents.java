@@ -31,16 +31,16 @@ public class GameTestEvents implements IGameEngine{
     public GameTestEvents(ICanvasDevice canvas){
         this.canvasDevice = canvas;
         this.canvasDevice.setupEventHandler(this);
+        
     }
 
     @Override
     public void init() {
-        //do nothing
+        System.out.print("123 init\n");
     }
 
     @Override
     public void onTick() {
-        //do nothing
     }
 
     @Override
