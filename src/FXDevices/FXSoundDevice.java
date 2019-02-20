@@ -33,16 +33,7 @@ import javafx.util.Duration;
  */
 
 public class FXSoundDevice implements ISoundDevice {
-
-    // ---- DATA MEMBERS ----------------
-   // private String musicFile = "../resources/sound/drama.wav";
-    //private String okFile = "../resources/sound/ok.wav";
-    //private Duration duration;
     private static MediaPlayer mediaPlayer;
-    
-    
-    // ---- OPERATIONS
-    
     @Override
     public void playRepeated(String resourcePath) {
         Media backgroundMusic = new Media(new File(resourcePath).toURI().toString());
@@ -52,19 +43,11 @@ public class FXSoundDevice implements ISoundDevice {
             @Override 
             public void run()
             {
-                System.out.print("New Runnable Created");
                 mediaPlayer.seek(Duration.ZERO);
                 mediaPlayer.play();            }
         });
-        /*mediaPlayer.seek(Duration.ZERO);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);*/
-        
         mediaPlayer.seek(Duration.ZERO);
         mediaPlayer.play();
-       
-       
-        
-        // throw new UnsupportedOperationException("Not implemented yet!");
     }
 
     @Override
@@ -73,14 +56,6 @@ public class FXSoundDevice implements ISoundDevice {
         MediaPlayer oneTick = new MediaPlayer(okSound);
         oneTick.seek(Duration.ZERO);
         oneTick.play();
-       /* oneTick.setOnEndOfMedia(new Runnable()
-        {
-            public void run()
-            {
-                oneTick.stop();
-            }
-        });*/
-        // throw new UnsupportedOperationException("Not implemented yet!");
     }
 
 }

@@ -74,7 +74,6 @@ public class FXCanvasDevice implements ICanvasDevice {
        if(!imgLoad.containsKey(iPath)){
             bloc = new Image(iPath);
             imgLoad.put(iPath,bloc);
-            System.out.println("Image Queued");
        }
        Image Hbloc = imgLoad.get(iPath);
        gc.save();
